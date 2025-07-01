@@ -3,6 +3,7 @@ import pytest
 from Python.FirstUniqueChar import main as FirstUniqueChar
 from Python.NearestZeroSumTwo import main as NearestZeroSumTwo
 from Python.AngleHourAndMinute import main as AngleHourAndMinute
+from Python.NthEvenFibNum import main as NthEvenFibNum
 
 #would be safer to use monkeypatch to change sys.argv
 
@@ -43,3 +44,16 @@ def test_AngleHourAndMinute():
     r2 = AngleHourAndMinute()
 
     assert r2 == 90
+
+def test_NthEvenFibNum():
+    sys.argv = ["", "1"]
+
+    r1 = NthEvenFibNum()
+
+    assert r1 == 2
+
+    sys.argv = ["", "4"]
+
+    r2 = NthEvenFibNum()
+
+    assert r2 == 144
