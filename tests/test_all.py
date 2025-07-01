@@ -1,7 +1,8 @@
 import sys
 import pytest
-from FirstUniqueChar import main as FirstUniqueChar
-from NearestZeroSumTwo import main as NearestZeroSumTwo
+from Python.FirstUniqueChar import main as FirstUniqueChar
+from Python.NearestZeroSumTwo import main as NearestZeroSumTwo
+from Python.AngleHourAndMinute import main as AngleHourAndMinute
 
 #would be safer to use monkeypatch to change sys.argv
 
@@ -29,3 +30,16 @@ def test_NearestZeroSumTwo():
     r2 = NearestZeroSumTwo()
 
     assert r2 == (4,2) or r2 == (2,4)
+
+def test_AngleHourAndMinute():
+    sys.argv = ["", "3", "30"]
+
+    r1 = AngleHourAndMinute()
+
+    assert r1 == 75
+
+    sys.argv = ["", "9", "0"]
+
+    r2 = AngleHourAndMinute()
+
+    assert r2 == 90
