@@ -6,6 +6,7 @@ from Python.AngleHourAndMinute import main as AngleHourAndMinute
 from Python.NthEvenFibNum import main as NthEvenFibNum
 from Python.ProductArray import main as ProductArray
 from Python.RotateArray import main as RotateArray
+from Python.RotateArrayNoAuxiliarSpace import main as RotateArrayNAS
 
 #would be safer to use monkeypatch to change sys.argv
 
@@ -89,4 +90,46 @@ def test_RotateArray():
     sys.argv = ["", "1", "2", "3", "4", "4"]
 
     r4 = RotateArray()
+    assert r4 == [1, 2, 3, 4]
+
+def test_RotateArray():
+    sys.argv = ["", "1", "2", "3", "4", "1"]
+
+    r1 = RotateArray()
+    assert r1 == [2, 3, 4, 1]
+
+    sys.argv = ["", "1", "2", "3", "4", "2"]
+
+    r2 = RotateArray()
+    assert r2 == [3, 4, 1, 2]
+
+    sys.argv = ["", "1", "2", "3", "4", "3"]
+
+    r3 = RotateArray()
+    assert r3 == [4, 1, 2, 3]
+
+    sys.argv = ["", "1", "2", "3", "4", "4"]
+
+    r4 = RotateArray()
+    assert r4 == [1, 2, 3, 4]
+
+def test_RotateArrayNAS():
+    sys.argv = ["", "1", "2", "3", "4", "1"]
+
+    r1 = RotateArrayNAS()
+    assert r1 == [4, 1, 2, 3]
+
+    sys.argv = ["", "1", "2", "3", "4", "2"]
+
+    r2 = RotateArrayNAS()
+    assert r2 == [3, 4, 1, 2]
+
+    sys.argv = ["", "1", "2", "3", "4", "3"]
+
+    r3 = RotateArrayNAS()
+    assert r3 == [2, 3, 4, 1]
+
+    sys.argv = ["", "1", "2", "3", "4", "4"]
+
+    r4 = RotateArrayNAS()
     assert r4 == [1, 2, 3, 4]
