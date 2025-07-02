@@ -5,6 +5,7 @@ from Python.NearestZeroSumTwo import main as NearestZeroSumTwo
 from Python.AngleHourAndMinute import main as AngleHourAndMinute
 from Python.NthEvenFibNum import main as NthEvenFibNum
 from Python.ProductArray import main as ProductArray
+from Python.RotateArray import main as RotateArray
 
 #would be safer to use monkeypatch to change sys.argv
 
@@ -68,3 +69,24 @@ def test_ProductArray():
 
     r3 = ProductArray()
     assert r3 == [0, 0, 0, 0, 0]
+
+def test_RotateArray():
+    sys.argv = ["", "1", "2", "3", "4", "1"]
+
+    r1 = RotateArray()
+    assert r1 == [2, 3, 4, 1]
+
+    sys.argv = ["", "1", "2", "3", "4", "2"]
+
+    r2 = RotateArray()
+    assert r2 == [3, 4, 1, 2]
+
+    sys.argv = ["", "1", "2", "3", "4", "3"]
+
+    r3 = RotateArray()
+    assert r3 == [4, 1, 2, 3]
+
+    sys.argv = ["", "1", "2", "3", "4", "4"]
+
+    r4 = RotateArray()
+    assert r4 == [1, 2, 3, 4]
