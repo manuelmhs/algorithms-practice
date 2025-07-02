@@ -7,6 +7,7 @@ from Python.NthEvenFibNum import main as NthEvenFibNum
 from Python.ProductArray import main as ProductArray
 from Python.RotateArray import main as RotateArray
 from Python.RotateArrayNoAuxiliarSpace import main as RotateArrayNAS
+from Python.MaximumNonNegativeSubArray import main as MaximumNNSubArray
 from Python.MaximumSubArray import main as MaximumSubArray
 
 #would be safer to use monkeypatch to change sys.argv
@@ -135,18 +136,34 @@ def test_RotateArrayNAS():
     r4 = RotateArrayNAS()
     assert r4 == [1, 2, 3, 4]
 
-def test_MaximumSubArray():
+def test_MaximumNNSubArray():
     sys.argv = ["", "-1", "-5", "-2"]
 
-    r1 = MaximumSubArray()
+    r1 = MaximumNNSubArray()
     assert r1 == -1
 
     sys.argv = ["", "1", "5", "-2", "0", "6", "-3", "-3", "4", "2"]
 
-    r2 = MaximumSubArray()
+    r2 = MaximumNNSubArray()
     assert r2 == [1, 5]
 
     sys.argv = ["", "1", "2", "-1", "3" , "1"]
 
-    r3 = MaximumSubArray()
+    r3 = MaximumNNSubArray()
     assert r3 == [3, 1]
+
+def test_MaximumSubArray():
+    sys.argv = ["", "-10", "-2", "-15"]
+
+    r1 = MaximumSubArray()
+    assert r1 == -2
+
+    sys.argv = ["", "4", "-5", "2", "-1", "10", "-5", "6"]
+
+    r2 = MaximumSubArray()
+    assert r2 == 12
+
+    sys.argv = ["", "1", "2", "0", "12", "3", "4", "0"]
+
+    r3 = MaximumSubArray()
+    assert r3 == 22

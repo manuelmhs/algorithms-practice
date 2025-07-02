@@ -1,47 +1,39 @@
 """
-Given an array of integers arr[], find the contiguous subarray with the maximum sum that contains only non-negative numbers.
-If multiple subarrays have the same sum, return the one with the smallest starting index.
-If the array contains only negative numbers, return -1.
-
-Note: A subarray is a contiguous non-empty sequence of elements within an array.
+Given an array of integers arr[], find the maximum contiguous sum (can be formed with both positive and negative numbers).
+Assume arr[] is not empty.
 """
 
 import sys
+from math import floor
+
+#usage of Divide and Conquer and tupling
+#W(n) = n, S(n) = lg n
+
+def MSB(arr):
+    l = len(arr)
+    if l == 1:
+        return (arr[0], arr[0], arr[0], arr[0])
+    else:
+        mid = floor(l/2)
+
+        (maximum1, prefix1, suffix1, total1) = MSB(arr[:mid])
+        (maximum2, prefix2, suffix2, total2) = MSB(arr[mid:])
+
+        prefix = max(prefix1, total1, total1 + prefix2, total1 + total2)
+        suffix = max(suffix2, total2, total2 + suffix1, total1 + total2)
+        total = total1 + total2
+        maximum = max(maximum1, maximum2, suffix1 + prefix2,
+                      suffix1 + total2, total1 + prefix2, total1 + total2)
+        
+        return (maximum, prefix, suffix, total)
 
 def main():
     arr = list(map(int, sys.argv[1:]))
 
-    start = end = max = tempStart = tempEnd = tempSum = -1
-    for i, n in enumerate(arr):
-        if n >= 0:
-            if tempStart == -1:
-                tempStart = i
-                tempEnd = i
-                tempSum = n
-            else:
-                tempEnd = i
-                tempSum += n
-        else:
-            if tempSum > max:
-                max = tempSum
-                start = tempStart
-                end = tempEnd
+    (m, _, _, _) = MSB(arr)
 
-            tempStart = tempEnd = tempSum = -1
-
-    if tempSum > max:
-        max = tempSum
-        start = tempStart
-        end = tempEnd
-
-    res = None
-    if (max == -1):
-        res = -1
-    else:
-        res = arr[start:end+1]
-        
-    print(res)
-    return res
+    print(m)
+    return m
 
 if __name__ == "__main__":
     main()
