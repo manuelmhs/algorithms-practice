@@ -6,9 +6,37 @@ Assume arr[] is not empty.
 import sys
 from math import floor
 
+#W(n) = S(n) = n^2
+def IterativeNaive(arr):
+    partial = maximum = float('-inf')
+    for i, n in enumerate(arr):
+        partial = n
+        maximum = max(partial, maximum)
+        for j, m in enumerate(arr[i+1:]):
+            partial += m
+            maximum = max(partial, maximum)
+
+    return maximum
+
+
+#usage of Kadane's algorithm
+#W(n) = S(n) = n
+def Kadane(arr):
+    partial = arr[0]
+    maximum = arr[0]
+
+    for n in arr[1:]: #this generates an unnecessary copy
+        if partial >= 0:
+            partial += n
+        else:
+            partial = n
+
+        maximum = max(partial, maximum)
+
+    return maximum
+
 #usage of Divide and Conquer and tupling
 #W(n) = n, S(n) = lg n
-
 def MSB(arr):
     l = len(arr)
     if l == 1:
@@ -30,10 +58,13 @@ def MSB(arr):
 def main():
     arr = list(map(int, sys.argv[1:]))
 
-    (m, _, _, _) = MSB(arr)
+    m1 = IterativeNaive(arr)
+    m2 = Kadane(arr)
+    (m3, _, _, _) = MSB(arr)
+    
 
-    print(m)
-    return m
+    print(f"{m1}, {m2}, {m3}")
+    return (m1, m2, m3)
 
 if __name__ == "__main__":
     main()

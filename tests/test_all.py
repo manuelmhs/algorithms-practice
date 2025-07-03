@@ -159,17 +159,17 @@ def test_MaximumSubArray():
     sys.argv = ["", "-10", "-2", "-15"]
 
     r1 = MaximumSubArray()
-    assert r1 == -2
+    assert r1 == (-2, -2, -2)
 
     sys.argv = ["", "4", "-5", "2", "-1", "10", "-5", "6"]
 
     r2 = MaximumSubArray()
-    assert r2 == 12
+    assert r2 == (12, 12, 12)
 
     sys.argv = ["", "1", "2", "0", "12", "3", "4", "0"]
 
     r3 = MaximumSubArray()
-    assert r3 == 22
+    assert r3 == (22, 22, 22)
 
 def test_AllSubArrays():
     sys.argv = ["", "1", "2", "3", "4"]
