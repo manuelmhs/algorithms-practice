@@ -12,6 +12,7 @@ from Python.Arrays.MaximumNonNegativeSubArray import main as MaximumNNSubArray
 from Python.Arrays.MaximumSubArray import main as MaximumSubArray
 from Python.Arrays.AllSubArrays import main as AllSubArrays
 from Python.Arrays.AllSubsets import main as AllSubsets
+from Python.Arrays.SubsetSum import main as SubsetSum
 
 #would be safer to use monkeypatch to change sys.argv
 
@@ -199,3 +200,19 @@ def test_AllSubsets():
 
     output2 = sorted([["1"], ["2"], ["3"], ["1", "2"], ["1", "3"], ["2","3"], ["1", "2", "3"],[]])
     assert (r21, r22) == (output2, output2)
+
+def test_SubsetSum():
+    sys.argv = ["", "1", "-2", "4", "0", "-3", "7", "5", "-8", "17"]
+
+    r11, r12, r13 = SubsetSum()
+    assert (r11, r12, r13) == (True, True, True)
+
+    sys.argv = ["", "1", "-2", "4", "0", "-3", "7", "5", "-8", "-5"]
+
+    r21, r22, r23 = SubsetSum()
+    assert (r21, r22, r23) == (True, True, True)
+
+    sys.argv = ["", "1", "-2", "4", "0", "-3", "7", "5", "-8", "18"]
+
+    r31, r32, r33 = SubsetSum()
+    assert (r31, r32, r33) == (False, False, False)
