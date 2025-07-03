@@ -11,6 +11,7 @@ from Python.Arrays.RotateArrayNoAuxiliarSpace import main as RotateArrayNAS
 from Python.Arrays.MaximumNonNegativeSubArray import main as MaximumNNSubArray
 from Python.Arrays.MaximumSubArray import main as MaximumSubArray
 from Python.Arrays.AllSubArrays import main as AllSubArrays
+from Python.Arrays.AllSubsets import main as AllSubsets
 
 #would be safer to use monkeypatch to change sys.argv
 
@@ -182,3 +183,19 @@ def test_AllSubArrays():
     r2 = AllSubArrays()
     output2 = [["1"]]
     assert r2 == (output2, output2)
+
+def test_AllSubsets():
+    sys.argv = [""]
+
+    r11, r12 = AllSubsets()
+    output1 = [[]]
+    assert (r11, r12) == (output1, output1)
+
+    sys.argv = ["", "1", "2", "3"]
+
+    r21, r22 = AllSubsets()
+    r21 = sorted([sorted(l) for l in r21])
+    r22 = sorted([sorted(l) for l in r22])
+
+    output2 = sorted([["1"], ["2"], ["3"], ["1", "2"], ["1", "3"], ["2","3"], ["1", "2", "3"],[]])
+    assert (r21, r22) == (output2, output2)
