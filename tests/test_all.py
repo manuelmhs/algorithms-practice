@@ -1,14 +1,16 @@
 import sys
 import pytest
 from Python.FirstUniqueChar import main as FirstUniqueChar
-from Python.NearestZeroSumTwo import main as NearestZeroSumTwo
+from Python.Arrays.NearestZeroSumTwo import main as NearestZeroSumTwo
 from Python.AngleHourAndMinute import main as AngleHourAndMinute
 from Python.NthEvenFibNum import main as NthEvenFibNum
-from Python.ProductArray import main as ProductArray
-from Python.RotateArray import main as RotateArray
-from Python.RotateArrayNoAuxiliarSpace import main as RotateArrayNAS
-from Python.MaximumNonNegativeSubArray import main as MaximumNNSubArray
-from Python.MaximumSubArray import main as MaximumSubArray
+
+from Python.Arrays.ProductArray import main as ProductArray
+from Python.Arrays.RotateArray import main as RotateArray
+from Python.Arrays.RotateArrayNoAuxiliarSpace import main as RotateArrayNAS
+from Python.Arrays.MaximumNonNegativeSubArray import main as MaximumNNSubArray
+from Python.Arrays.MaximumSubArray import main as MaximumSubArray
+from Python.Arrays.AllSubArrays import main as AllSubArrays
 
 #would be safer to use monkeypatch to change sys.argv
 
@@ -167,3 +169,16 @@ def test_MaximumSubArray():
 
     r3 = MaximumSubArray()
     assert r3 == 22
+
+def test_AllSubArrays():
+    sys.argv = ["", "1", "2", "3", "4"]
+
+    r1 = AllSubArrays()
+    output1 = [["1"], ["1", "2"], ["1", "2", "3"], ["1", "2", "3", "4"], ["2"], ["2", "3"], ["2", "3", "4"], ["3"], ["3", "4"], ["4"]]
+    assert r1 == (output1, output1)
+
+    sys.argv = ["", "1"]
+
+    r2 = AllSubArrays()
+    output2 = [["1"]]
+    assert r2 == (output2, output2)
