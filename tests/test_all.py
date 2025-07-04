@@ -4,6 +4,7 @@ from Python.FirstUniqueChar import main as FirstUniqueChar
 from Python.Arrays.NearestZeroSumTwo import main as NearestZeroSumTwo
 from Python.AngleHourAndMinute import main as AngleHourAndMinute
 from Python.NthEvenFibNum import main as NthEvenFibNum
+from Python.FibMemo import main as FibMemo
 
 from Python.Arrays.ProductArray import main as ProductArray
 from Python.Arrays.RotateArray import main as RotateArray
@@ -15,6 +16,18 @@ from Python.Arrays.AllSubsets import main as AllSubsets
 from Python.Arrays.SubsetSum import main as SubsetSum
 
 #would be safer to use monkeypatch to change sys.argv
+
+def test_FibMemo():
+    sys.argv = ["", "0"]
+    r1 = FibMemo()
+
+    sys.argv = ["", "1"]
+    r2 = FibMemo()
+
+    sys.argv = ["", "20"]
+    r3 = FibMemo()
+
+    assert r1 == (0, 0, 0) and r2 == (1, 1, 1) and r3 == (6765, 6765, 6765)
 
 def test_FirstUniqueChar():
     sys.argv = ["", "abcda"]
