@@ -4,6 +4,7 @@ Given a positive integer n, find the nth Even Fibonacci number.
 """
 
 import sys
+
 def main():
     n = int(sys.argv[1])
 

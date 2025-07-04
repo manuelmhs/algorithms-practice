@@ -5,6 +5,7 @@ from Python.Arrays.NearestZeroSumTwo import main as NearestZeroSumTwo
 from Python.AngleHourAndMinute import main as AngleHourAndMinute
 from Python.NthEvenFibNum import main as NthEvenFibNum
 from Python.FibMemo import main as FibMemo
+from Python.NQueens import main as NQueens
 
 from Python.Arrays.ProductArray import main as ProductArray
 from Python.Arrays.RotateArray import main as RotateArray
@@ -229,3 +230,16 @@ def test_SubsetSum():
 
     r31, r32, r33 = SubsetSum()
     assert (r31, r32, r33) == (False, False, False)
+
+def test_NQueens():
+    sys.argv = ["", "3"]
+
+    f1, _ = NQueens()
+
+    assert f1 == False
+
+    sys.argv = ["", "4"]
+
+    f2, ret2 = NQueens()
+
+    assert f2 == True and ret2 == [(1, 0), (3, 1), (0, 2), (2, 3)]
