@@ -6,7 +6,9 @@ from Python.AngleHourAndMinute import main as AngleHourAndMinute
 from Python.NthEvenFibNum import main as NthEvenFibNum
 from Python.FibMemo import main as FibMemo
 from Python.NQueens import main as NQueens
+
 from Python.Sorting.MergeSort import main as MergeSort
+from Python.Sorting.BinaryArrSort import main as BinaryArrSort
 
 from Python.Arrays.ProductArray import main as ProductArray
 from Python.Arrays.RotateArray import main as RotateArray
@@ -257,3 +259,12 @@ def test_MergeSort():
     sys.argv = ["", "3", "5", "1", "4", "2"]
     r3 = MergeSort()
     assert r3 == [1, 2, 3, 4, 5]
+
+def test_BinaryArrSort():
+    sys.argv = [""]
+    r1 = BinaryArrSort()
+    assert r1 == []
+
+    sys.argv = ["", "1", "0", "1", "1", "0"]
+    r2 = BinaryArrSort()
+    assert r2 == [0, 0, 1, 1, 1]
