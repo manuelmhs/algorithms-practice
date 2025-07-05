@@ -6,6 +6,7 @@ from Python.AngleHourAndMinute import main as AngleHourAndMinute
 from Python.NthEvenFibNum import main as NthEvenFibNum
 from Python.FibMemo import main as FibMemo
 from Python.NQueens import main as NQueens
+from Python.Sorting.MergeSort import main as MergeSort
 
 from Python.Arrays.ProductArray import main as ProductArray
 from Python.Arrays.RotateArray import main as RotateArray
@@ -243,3 +244,16 @@ def test_NQueens():
     f2, ret2 = NQueens()
 
     assert f2 == True and ret2 == [(1, 0), (3, 1), (0, 2), (2, 3)]
+
+def test_MergeSort():
+    sys.argv = [""]
+    r1 = MergeSort()
+    assert r1 == []
+
+    sys.argv = ["", "1"]
+    r2 = MergeSort()
+    assert r2 == [1]
+
+    sys.argv = ["", "3", "5", "1", "4", "2"]
+    r3 = MergeSort()
+    assert r3 == [1, 2, 3, 4, 5]

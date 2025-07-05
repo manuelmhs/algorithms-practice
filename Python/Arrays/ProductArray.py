@@ -5,6 +5,7 @@ arr.size() >= 2
 """
 
 import sys
+
 def main():
     arr = list(map(int, sys.argv[1:]))
     total = 1
