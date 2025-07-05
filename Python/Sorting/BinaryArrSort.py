@@ -9,6 +9,9 @@ import sys
 def main():
     arr = list(map(int, sys.argv[1:]))
 
+    """
+    Naive implementation
+
     countZeroes = 0
 
     for bin in arr:
@@ -21,6 +24,17 @@ def main():
             countZeroes -= 1
         else:
             arr[i] = 1
+    """
+
+    #One pass implementation, using two indexes
+    firstOneIdx = -1
+    for i, bin in enumerate(arr):
+        if bin == 0 and firstOneIdx != -1:
+            arr[firstOneIdx] = 0
+            arr[i] = 1
+            firstOneIdx += 1
+        if bin == 1 and firstOneIdx == -1:
+            firstOneIdx = i
 
     print(arr)
     return arr

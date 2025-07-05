@@ -1,14 +1,15 @@
 import sys
 import pytest
-from Python.FirstUniqueChar import main as FirstUniqueChar
-from Python.Arrays.NearestZeroSumTwo import main as NearestZeroSumTwo
-from Python.AngleHourAndMinute import main as AngleHourAndMinute
-from Python.NthEvenFibNum import main as NthEvenFibNum
-from Python.FibMemo import main as FibMemo
-from Python.NQueens import main as NQueens
+
+from Python.Misc.FirstUniqueChar import main as FirstUniqueChar
+from Python.Misc.AngleHourAndMinute import main as AngleHourAndMinute
+from Python.Misc.NthEvenFibNum import main as NthEvenFibNum
+from Python.Misc.FibMemo import main as FibMemo
+from Python.Misc.NQueens import main as NQueens
 
 from Python.Sorting.MergeSort import main as MergeSort
 from Python.Sorting.BinaryArrSort import main as BinaryArrSort
+from Python.Sorting.Sort0s1s2s import main as Sort0s1s2s
 
 from Python.Arrays.ProductArray import main as ProductArray
 from Python.Arrays.RotateArray import main as RotateArray
@@ -18,6 +19,7 @@ from Python.Arrays.MaximumSubArray import main as MaximumSubArray
 from Python.Arrays.AllSubArrays import main as AllSubArrays
 from Python.Arrays.AllSubsets import main as AllSubsets
 from Python.Arrays.SubsetSum import main as SubsetSum
+from Python.Arrays.NearestZeroSumTwo import main as NearestZeroSumTwo
 
 #would be safer to use monkeypatch to change sys.argv
 
@@ -268,3 +270,12 @@ def test_BinaryArrSort():
     sys.argv = ["", "1", "0", "1", "1", "0"]
     r2 = BinaryArrSort()
     assert r2 == [0, 0, 1, 1, 1]
+
+def test_Sort0s1s2s():
+    sys.argv = [""]
+    r1 = Sort0s1s2s()
+    assert r1 == []
+
+    sys.argv = ["", "0", "1", "1", "0", "1", "2", "1", "2", "0", "0", "0", "1"]
+    r2 = Sort0s1s2s()
+    assert r2 == [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2]
