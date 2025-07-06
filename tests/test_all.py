@@ -7,9 +7,13 @@ from Python.Misc.NthEvenFibNum import main as NthEvenFibNum
 from Python.Misc.FibMemo import main as FibMemo
 from Python.Misc.NQueens import main as NQueens
 
-from Python.Sorting.MergeSort import main as MergeSort
 from Python.Sorting.BinaryArrSort import main as BinaryArrSort
 from Python.Sorting.Sort0s1s2s import main as Sort0s1s2s
+from Python.Sorting.MergeSort import main as MergeSort
+from Python.Sorting.QuickSort import main as QuickSort
+from Python.Sorting.BubbleSort import main as BubbleSort
+from Python.Sorting.InsertionSort import main as InsertionSort
+from Python.Sorting.SelectionSort import main as SelectionSort
 
 from Python.Arrays.ProductArray import main as ProductArray
 from Python.Arrays.RotateArray import main as RotateArray
@@ -249,18 +253,30 @@ def test_NQueens():
 
     assert f2 == True and ret2 == [(1, 0), (3, 1), (0, 2), (2, 3)]
 
-def test_MergeSort():
+def test_SortingAlgorithms():
     sys.argv = [""]
-    r1 = MergeSort()
-    assert r1 == []
+    r11 = BubbleSort()
+    r12 = InsertionSort()
+    r13 = SelectionSort()
+    r14 = MergeSort()
+    r15 = QuickSort()
+    assert r11 == r12 == r13 == r14 == r15 == []
 
     sys.argv = ["", "1"]
-    r2 = MergeSort()
-    assert r2 == [1]
+    r21 = BubbleSort()
+    r22 = InsertionSort()
+    r23 = SelectionSort()
+    r24 = MergeSort()
+    r25 = QuickSort()
+    assert r21 == r22 == r23 == r24 == r25 == [1]
 
     sys.argv = ["", "3", "5", "1", "4", "2"]
-    r3 = MergeSort()
-    assert r3 == [1, 2, 3, 4, 5]
+    r31 = BubbleSort()
+    r32 = InsertionSort()
+    r33 = SelectionSort()
+    r34 = MergeSort()
+    r35 = QuickSort()
+    assert r31 == r32 == r33 == r34 == r35 == [1, 2, 3, 4, 5]
 
 def test_BinaryArrSort():
     sys.argv = [""]

@@ -1,8 +1,11 @@
 import sys
 from math import floor
 
-#we modify the original arr instead of creating a new one in each recursion for optimization
+# the idea of merge sort: this a top-down, divide and conquer algorithm, we start from the whole array, and in each step
+# we split in halves (divide). then we recursively sort the corresponding halves (recursion) and finally sort the resulting halves (merge)
+# the important thing is that we know that each half will be sorted properly due to recursion
 
+#we modify the original arr instead of creating a new one in each recursion for optimization
 def MergeSort(arr, start=-1, end=-1):
     if (start == end == -1):
         start = 0
