@@ -24,6 +24,8 @@ from Python.Arrays.AllSubArrays import main as AllSubArrays
 from Python.Arrays.AllSubsets import main as AllSubsets
 from Python.Arrays.SubsetSum import main as SubsetSum
 from Python.Arrays.NearestZeroSumTwo import main as NearestZeroSumTwo
+from Python.Arrays.Partition import main as Partition
+from Python.Arrays.IsPartition import main as IsPartition
 
 #would be safer to use monkeypatch to change sys.argv
 
@@ -295,3 +297,54 @@ def test_Sort0s1s2s():
     sys.argv = ["", "0", "1", "1", "0", "1", "2", "1", "2", "0", "0", "0", "1"]
     r2 = Sort0s1s2s()
     assert r2 == [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2]
+
+def test_IsPartition():
+    sys.argv = ["", "continue"]
+    r1 = IsPartition()
+    assert r1 == True
+
+    sys.argv = ["", "1", "continue", "1"]
+    r2 = IsPartition()
+    assert r2 == True
+
+    sys.argv = ["", "1", "continue", "2"]
+    r3 = IsPartition()
+    assert r3 == False
+
+    sys.argv = ["", "1", "1", "continue", "1"]
+    r4 = IsPartition()
+    assert r4 == False
+
+    sys.argv = ["", "2", "0", "1", "3", "5", "4", "continue", "3", "4", "1", "5", "2", "0"]
+    r5 = IsPartition()
+    assert r5 == True
+
+    sys.argv = ["", "2", "1", "3", "continue", "2", "3", "1"]
+    r6 = IsPartition()
+    assert r6 == False
+
+    sys.argv = ["", "5", "4", "5", "6", "continue", "5", "4", "5", "6"]
+    r7 = IsPartition()
+    assert r7 == True
+
+    sys.argv = ["", "5", "4", "5", "6", "5", "continue", "5", "4", "5", "6", "5"]
+    r8 = IsPartition()
+    assert r8 == True
+
+    sys.argv = ["", "5", "6", "5", "4", "5", "continue", "5", "6", "5", "4", "5"]
+    r9 = IsPartition()
+    assert r9 == False
+
+def test_Partition():
+    sys.argv = [""]
+    r11, r12, r13 = Partition()
+    assert r11 == r12 == r13 == []
+
+    sys.argv = ["", "1"]
+    r21, r22, r23 = Partition()
+    assert r21 == r22 == r23 == [1]
+
+    sys.argv = ["", "3", "4", "1", "2", "5", "0"]
+    arrArg = [3, 4, 1, 2, 5, 0]
+    r31, r32, r33 = Partition()
+    assert IsPartition(r31, arrArg) and IsPartition(r32, arrArg) and IsPartition(r33, arrArg)
