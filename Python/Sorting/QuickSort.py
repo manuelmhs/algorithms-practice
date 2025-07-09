@@ -5,7 +5,7 @@ import sys
 # difference with merge sort, in this case merging is trivial and the split is costful
 
 # naive, functional implementation
-def QuickSort(arr):
+def naive(arr):
     l = len(arr)
     if l == 0:
         return []
@@ -23,15 +23,40 @@ def QuickSort(arr):
             else:
                 right.append(arr[i])
         #recursion
-        left = QuickSort(left)
-        right = QuickSort(right)
+        left = naive(left)
+        right = naive(right)
         #merge
         return left + [pivot] + right
+
+
+from Python.Arrays.Partition import Lomuto
+from random import randint
+
+def QuickSort(arr, start=-1, end=-1): # better not use None as default because it's falsy as 0 (which is a valid index)
+    # if not start and not end: CAREFUL FOR start = end = 0
+    if start == end == -1:
+        start = 0
+        end = len(arr)
+
+    l = end - start
+    if l <= 1: # base case
+        # trivial, doesn't do anything
+        return
+    else: # recursive case
+        # split
+        pivotIdx = randint(start, end-1)
+        k = Lomuto(arr, pivotIdx, start, end)
+        # recursion
+        QuickSort(arr, start, k)
+        QuickSort(arr, k+1, end)
+
+        # merge
+        # in this algorithm merge is trivial
 
 def main():
     arr = list(map(int, sys.argv[1:]))
 
-    arr = QuickSort(arr)
+    QuickSort(arr)
 
     print(arr)
     return arr

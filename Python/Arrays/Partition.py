@@ -58,7 +58,7 @@ def naiveInPlace(arr):
             continue
 
 # Time complexity: O(n), Auxiliar space: O(1)
-def Lomuto(arr, pivotIdx=0):
+def Lomuto(arr, pivotIdx=-1, start=-1, end=-1):
     # Lomuto is a in-place, O(n) time complexity partition algorithm
     # the default pivot is the last element. we loop through the array, marking the last element that is lower-equal to the pivot (boundary)
     # if we encounter a greater value, we just continue
@@ -66,17 +66,27 @@ def Lomuto(arr, pivotIdx=0):
     # finally, the pivot will swap places just outside the boundary, leaving all lower-equal elements to the left, and greater to the right
     # it's more efficient than naives algorithms, but unlike them it's not a stable algorithm
 
+    # we use start and end values to partition only subarrays, useful for Quick Sort or other algorithms
+    if start == end == -1:
+        start = 0
+        end = len(arr)
+    l = end - start
+
+    # by default, the pivot is the first element of arr
+    if pivotIdx == -1:
+        pivotIdx = start
+
     if len(arr) == 0:
         return
 
     # we can choose which element is the pivot by swapping it with the last element
     temp = arr[pivotIdx]
-    arr[pivotIdx] = arr[-1]
-    arr[-1] = temp
+    arr[pivotIdx] = arr[end-1]
+    arr[end-1] = temp
 
-    pivot = arr[-1]
-    j = 0 # boundary index
-    for i in range(len(arr)):
+    pivot = arr[end-1]
+    j = start # boundary index
+    for i in range(start, end):
         n = arr[i]
         if n <= pivot: # because pivot will satisfy this if statement,  we don't need a special case
             arr[i] = arr[j] # swap actual element with boundary index
@@ -84,6 +94,9 @@ def Lomuto(arr, pivotIdx=0):
             j += 1 # expand boundary
         else:
             continue
+
+    pivotFinalIdx = j-1
+    return pivotFinalIdx # to use in Quick Sort algorithm
 
 def main():
     arr = list(map(int, sys.argv[1:]))
