@@ -6,6 +6,8 @@ from Python.Misc.AngleHourAndMinute import main as AngleHourAndMinute
 from Python.Misc.NthEvenFibNum import main as NthEvenFibNum
 from Python.Misc.FibMemo import main as FibMemo
 from Python.Misc.NQueens import main as NQueens
+from Python.Misc.LongestCommonPrefix import main as LongestCommonPrefix
+from Python.Misc.AtoiImplementation import main as AtoiImplementation
 
 from Python.Sorting.BinaryArrSort import main as BinaryArrSort
 from Python.Sorting.Sort0s1s2s import main as Sort0s1s2s
@@ -26,6 +28,7 @@ from Python.Arrays.SubsetSum import main as SubsetSum
 from Python.Arrays.NearestZeroSumTwo import main as NearestZeroSumTwo
 from Python.Arrays.Partition import main as Partition
 from Python.Arrays.IsPartition import main as IsPartition
+from Python.Arrays.SmallestGreatestElements import main as SmallestGreatestElements
 
 #would be safer to use monkeypatch to change sys.argv
 
@@ -348,3 +351,54 @@ def test_Partition():
     arrArg = [3, 4, 1, 2, 5, 0]
     r31, r32, r33 = Partition()
     assert IsPartition(r31, arrArg) and IsPartition(r32, arrArg) and IsPartition(r33, arrArg)
+
+def test_LongestCommonPrefix():
+    sys.argv = ["", "geeks", "dgeek"]
+    r1 = LongestCommonPrefix()
+
+    sys.argv = ["", "practicegeeks", "coderpractice"]
+    r2 = LongestCommonPrefix()
+
+    sys.argv = ["", "ggeggksyabcdef", "agaggeggeggksy"]
+    r3 = LongestCommonPrefix()
+
+    sys.argv = ["", "abcdef", "bbbccc"]
+    r4 = LongestCommonPrefix()
+
+    assert r1 == 4 and r2 == 8 and r3 == 8 and r4 == 0
+
+def test_AtoiImplementation():
+    sys.argv = ["", "-123"]
+    r1 = AtoiImplementation()
+
+    sys.argv = ["", "   -"]
+    r2 = AtoiImplementation()
+
+    sys.argv = ["", " 1231231231311133"]
+    r3 = AtoiImplementation()
+
+    sys.argv = ["", "-999999999999"]
+    r4 = AtoiImplementation()
+
+    sys.argv = ["", "  -0012gfg4"]
+    r5 = AtoiImplementation()
+
+    assert r1 == -123 and r2 == 0 and r3 == (2**31)-1 and r4 == -(2**31) and r5 == -12
+
+def test_SmallestGreatestElements():
+    sys.argv = ["", "6", "3", "9", "8", "10", "2", "1", "15", "7"]
+    r1 = SmallestGreatestElements()
+
+    sys.argv = ["", "13", "6", "7", "12"]
+    r2 = SmallestGreatestElements()
+
+    sys.argv = ["", "1"]
+    r3 = SmallestGreatestElements()
+
+    sys.argv = [""]
+    r4 = SmallestGreatestElements()
+    
+    assert (r1 == [7, 6, 10, 9, 15, 3, 2, "_", 8]
+            and r2 == ["_", 7, 12, 13]
+            and r3 == ["_"]
+            and r4 == [])
