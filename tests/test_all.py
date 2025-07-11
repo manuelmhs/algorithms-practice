@@ -8,6 +8,7 @@ from Python.Misc.FibMemo import main as FibMemo
 from Python.Misc.NQueens import main as NQueens
 from Python.Misc.LongestCommonPrefix import main as LongestCommonPrefix
 from Python.Misc.AtoiImplementation import main as AtoiImplementation
+from Python.Misc.LargestHistogramArea import main as LargestHistogramArea
 
 from Python.Sorting.BinaryArrSort import main as BinaryArrSort
 from Python.Sorting.Sort0s1s2s import main as Sort0s1s2s
@@ -29,6 +30,9 @@ from Python.Arrays.NearestZeroSumTwo import main as NearestZeroSumTwo
 from Python.Arrays.Partition import main as Partition
 from Python.Arrays.IsPartition import main as IsPartition
 from Python.Arrays.SmallestGreatestElements import main as SmallestGreatestElements
+from Python.Arrays.LeftNearestSmallerNumbers import main as LeftNearestSmallerNumbers
+
+from Python.Matrices.MaxRectangle import main as MaxRectangle
 
 #would be safer to use monkeypatch to change sys.argv
 
@@ -402,3 +406,44 @@ def test_SmallestGreatestElements():
             and r2 == ["_", 7, 12, 13]
             and r3 == ["_"]
             and r4 == [])
+    
+def test_MaxRectangle():
+    sys.argv = ["", "1", "1", "0", "0", "0", "1", "b",
+                    "0", "1", "1", "0", "0", "1", "b",
+                    "0", "0", "1", "1", "0", "1"]
+    r1 = MaxRectangle()
+
+    sys.argv = ["", "0", "1", "1", "0", "b",
+                    "1", "1", "1", "1", "b",
+                    "1", "1", "1", "1", "b",
+                    "1", "1", "0", "0"]
+    r2 = MaxRectangle()
+
+    sys.argv = ["", "0", "1", "1", "b",
+                    "1", "1", "1", "b",
+                    "0", "1", "1"]
+    r3 = MaxRectangle()
+
+    assert r1 == 3 and r2 == 8 and r3 == 6
+
+def test_LargestHistogramArea():
+    sys.argv = [""]
+    r1 = LargestHistogramArea()
+
+    sys.argv = ["", "10"]
+    r2 = LargestHistogramArea()
+
+    sys.argv = ["", "60", "20", "50", "40", "10", "50", "60"]
+    r3 = LargestHistogramArea()
+
+    assert r1 == -1 and r2 == 10 and r3 == 100
+
+def test_LeftNearestSmallerNumbers():
+    sys.argv = ["", "1", "6", "2"]
+    r1 = LeftNearestSmallerNumbers()
+
+    sys.argv = ["", "1", "5", "0", "3", "4", "5"]
+    r2 = LeftNearestSmallerNumbers()
+
+    assert r1 == [-1, 1, 1] and r2 == [-1, 1, -1, 0, 3, 4]
+    
