@@ -9,6 +9,7 @@ from Python.Misc.NQueens import main as NQueens
 from Python.Misc.LongestCommonPrefix import main as LongestCommonPrefix
 from Python.Misc.AtoiImplementation import main as AtoiImplementation
 from Python.Misc.LargestHistogramArea import main as LargestHistogramArea
+from Python.Misc.ZeroSumTriplet import main as ZeroSumTriplet
 
 from Python.Sorting.BinaryArrSort import main as BinaryArrSort
 from Python.Sorting.Sort0s1s2s import main as Sort0s1s2s
@@ -446,4 +447,12 @@ def test_LeftNearestSmallerNumbers():
     r2 = LeftNearestSmallerNumbers()
 
     assert r1 == [-1, 1, 1] and r2 == [-1, 1, -1, 0, 3, 4]
-    
+
+def test_ZeroSumTriplet():
+    sys.argv = ["", "0", "-1", "2", "-3", "1"]
+    r1 = ZeroSumTriplet()
+
+    sys.argv = ["", "1", "2", "3"]
+    r2 = ZeroSumTriplet()
+
+    assert r1 == True and r2 == False
