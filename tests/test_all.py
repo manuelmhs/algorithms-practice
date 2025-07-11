@@ -32,6 +32,7 @@ from Python.Arrays.Partition import main as Partition
 from Python.Arrays.IsPartition import main as IsPartition
 from Python.Arrays.SmallestGreatestElements import main as SmallestGreatestElements
 from Python.Arrays.LeftNearestSmallerNumbers import main as LeftNearestSmallerNumbers
+from Python.Arrays.CountingInTwoArrays import main as CountingInTwoArrays
 
 from Python.Matrices.MaxRectangle import main as MaxRectangle
 
@@ -456,3 +457,11 @@ def test_ZeroSumTriplet():
     r2 = ZeroSumTriplet()
 
     assert r1 == True and r2 == False
+
+def test_CountingInTwoArrays():
+    sys.argv = ["", "4", "8", "7", "-1", "5", "1", "b",
+                    "4", "48", "3", "0", "1", "1", "5"]
+    
+    r = CountingInTwoArrays()
+
+    assert r == [5, 6, 6, 0, 6, 3]
