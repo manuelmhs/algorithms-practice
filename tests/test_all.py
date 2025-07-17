@@ -10,6 +10,7 @@ from Python.Misc.LongestCommonPrefix import main as LongestCommonPrefix
 from Python.Misc.AtoiImplementation import main as AtoiImplementation
 from Python.Misc.LargestHistogramArea import main as LargestHistogramArea
 from Python.Misc.ZeroSumTriplet import main as ZeroSumTriplet
+from Python.Misc.MaximumDifference import main as MaximumDifference
 
 from Python.Sorting.BinaryArrSort import main as BinaryArrSort
 from Python.Sorting.Sort0s1s2s import main as Sort0s1s2s
@@ -18,6 +19,7 @@ from Python.Sorting.QuickSort import main as QuickSort
 from Python.Sorting.BubbleSort import main as BubbleSort
 from Python.Sorting.InsertionSort import main as InsertionSort
 from Python.Sorting.SelectionSort import main as SelectionSort
+from Python.Sorting.MergeSortedLinkedLists import main as MergeSortedLinkedLists
 
 from Python.Arrays.ProductArray import main as ProductArray
 from Python.Arrays.RotateArray import main as RotateArray
@@ -465,3 +467,13 @@ def test_CountingInTwoArrays():
     r = CountingInTwoArrays()
 
     assert r == [5, 6, 6, 0, 6, 3]
+
+def test_MergeSortedLinkedLists():
+    sys.argv = ["", "1", "3", "b", "8", "b", "4", "5", "6"]
+
+    assert MergeSortedLinkedLists() == [1, 3, 4, 5, 6, 8]
+
+def test_MaximumDifference():
+    sys.argv = ["", "2", "4", "8", "7", "7", "9", "3"]
+
+    assert MaximumDifference() == 4
