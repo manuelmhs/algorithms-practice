@@ -38,6 +38,8 @@ from Python.Arrays.CountingInTwoArrays import main as CountingInTwoArrays
 
 from Python.Matrices.MaxRectangle import main as MaxRectangle
 
+from Python.Strings.WordBreaks import main as WordBreaks
+
 #would be safer to use monkeypatch to change sys.argv
 
 def test_FibMemo():
@@ -477,3 +479,12 @@ def test_MaximumDifference():
     sys.argv = ["", "2", "4", "8", "7", "7", "9", "3"]
 
     assert MaximumDifference() == 4
+
+def test_WordBreaks():
+    sys.argv = ["", "geeksforgeeks", "for", "geeks"]
+    r1 = WordBreaks()
+
+    sys.argv = ["", "likegfg", "lik", "like", "egfg", "gfg"]
+    r2 = WordBreaks()
+
+    assert sorted(r1) == ["geeks for geeks"] and sorted(r2) == ["lik egfg", "like gfg"]
